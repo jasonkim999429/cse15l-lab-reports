@@ -5,7 +5,7 @@ In this week's lab, I explored three commands: `cd`, `ls`, and `cat`. I tested t
 
 ## Testing `cd`
 
-No args
+No argument
 ---
 
 I first tested the `cd` command with no arguments. In this example, I started in the lecture1 directory. After inputting the `cd` command without any additional arguments, I received no output. However, the next line in the terminal shows that the prompt indicates that the current working directory is now the root directory, so it appears that the using `cd` without any argument changes the working directory to the root directory.
@@ -46,19 +46,83 @@ bash: cd: Hello.java: Not a directory
 ```
 
 
-Testing `ls`
+## Testing `ls`
 
-![Image](ls no arg.png)
+No argument
+---
 
-![Image](ls directory arg.png)
+```
+[user@sahara ~/lecture1]$ ls
+Hello.class  Hello.java  messages  README
+```
 
-![Image](ls file arg.png)
+
+Directory path argument
+---
+
+```
+[user@sahara ~/lecture1]$ ls messages
+en-us.txt  es-mx.txt  ko.txt  zh-cn.txt
+```
 
 
-Testing `cat`
+File path argument
+---
 
-![Image](cat no arg.png)
+```
+[user@sahara ~/lecture1]$ ls Hello.java
+Hello.java
+[user@sahara ~/lecture1]$ ls Hello.class
+Hello.class
+[user@sahara ~/lecture1]$ ls README
+README
+[user@sahara ~/lecture1]$ ls messages/en-us.txt
+messages/en-us.txt
+```
 
-![Image](cat directory arg.png)
 
-![Image](cat file arg.png)
+## Testing `cat`
+
+No argument
+---
+
+```
+[user@sahara ~/lecture1]$ cat
+test
+test
+cat
+cat
+cat messages/en-us.txt
+cat messages/en-us.txt
+cat Hello.java
+cat Hello.java
+^C
+```
+
+Directory path argument
+---
+
+```
+[user@sahara ~/lecture1]$ cat messages
+cat: messages: Is a directory
+[user@sahara ~/lecture1]$
+```
+
+File path argument
+---
+
+```
+[user@sahara ~/lecture1]$ cat messages/en-us.txt
+Hello World!
+[user@sahara ~/lecture1]$ cat Hello.java
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public class Hello {
+  public static void main(String[] args) throws IOException {
+    String content = Files.readString(Path.of(args[0]), StandardCharsets.UTF_8);    
+    System.out.println(content);
+  }
+```
