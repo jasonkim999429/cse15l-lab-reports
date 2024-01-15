@@ -1,7 +1,7 @@
 # **Lab Report 1**
----
 
 In this week's lab, I explored three commands: `cd`, `ls`, and `cat`. I tested these commands to see what sort of outputs and errors result from varying arguments (or lack of!). 
+
 
 ## Testing `cd`
 
@@ -46,6 +46,7 @@ bash: cd: Hello.java: Not a directory
 ```
 
 
+
 ## Testing `ls`
 
 No argument
@@ -85,6 +86,7 @@ README
 [user@sahara ~/lecture1]$ ls messages/en-us.txt
 messages/en-us.txt
 ```
+
 
 
 ## Testing `cat`
