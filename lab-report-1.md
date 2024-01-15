@@ -51,6 +51,8 @@ bash: cd: Hello.java: Not a directory
 No argument
 ---
 
+In this example, I tested the `ls` command with no argument, starting in the lecture1 directory. The output was a list of all files and directories in the current working directory (the lecture1 directory). This included both files and other directories. This case is not an error, as the output matches the use case we learned in class.
+
 ```
 [user@sahara ~/lecture1]$ ls
 Hello.class  Hello.java  messages  README
@@ -60,6 +62,8 @@ Hello.class  Hello.java  messages  README
 Directory path argument
 ---
 
+This example starts once again in the lecture1 directory, and I provided the `ls` command with an argument: a path to another directory. We know from the previous example, the messages directory is a child of the lecture1 directory. Thus, we can use 'messages' as a relative path to that directory. We can see that the output is a list of all files in the messages directory. This is not an error; from this we can infer that giving the `ls` command a valid path to a directory as an argument will list all contents of that directory.
+
 ```
 [user@sahara ~/lecture1]$ ls messages
 en-us.txt  es-mx.txt  ko.txt  zh-cn.txt
@@ -68,6 +72,8 @@ en-us.txt  es-mx.txt  ko.txt  zh-cn.txt
 
 File path argument
 ---
+
+Starting in the lecture1 directory, I initiated the `ls` command with a path to a file as an argument. The output was the name of the file specified, which is the expected behavior as described by the documentation, so it is not an error. However, this output is not very helpful to us. This was repeated multiple times with different types of files (.class, .java, etc.) in order to ensure that the behavior was not specific to any one of these types of files.
 
 ```
 [user@sahara ~/lecture1]$ ls Hello.java
@@ -86,6 +92,8 @@ messages/en-us.txt
 No argument
 ---
 
+We started in the lecture1 directory in this example, and used the `cat` command without any additional arguments. After entering the command, we can continue typing text, and after pressing 'return', the terminal prints back to us what we typed on that line, as shown below. I tried different examples, such as re-entering the `cat` command or with different arguments and path files, but the terminal only reprinted the typed line and prompted us for another input. The only way to break the input loop was to use ^C (control + C), similar to breaking an infinite while loop. This is not very helpful and can be considered an error.
+
 ```
 [user@sahara ~/lecture1]$ cat
 test
@@ -102,6 +110,8 @@ cat Hello.java
 Directory path argument
 ---
 
+We started again in the lecture1 directory, using the `cat` command with a path to a directory as an argument. Since messages is a child directory of our current working directory, we can use the relative path. The output indicates an error, stating that messages is a directory. This implies that we cannot use paths to directories as our argument for the `cat` command.
+
 ```
 [user@sahara ~/lecture1]$ cat messages
 cat: messages: Is a directory
@@ -110,6 +120,8 @@ cat: messages: Is a directory
 
 File path argument
 ---
+
+I start in the lecture1 directory, this time using the `cat` command with a file path as an argument. We specified the en-us.txt file in the messages directory, which is a child directory of the current working directory. The terminal printed the contents of the file as an output. I also tried the Hello.java file as an argument, which also resulted in the contents of the file being printed to the terminal. Finally, I used two file names as arguments, and the terminal outputted the contents of both files in the same order. These outputs were expected and matched the use cases we explored in class.
 
 ```
 [user@sahara ~/lecture1]$ cat messages/en-us.txt
@@ -125,4 +137,7 @@ public class Hello {
     String content = Files.readString(Path.of(args[0]), StandardCharsets.UTF_8);    
     System.out.println(content);
   }
+[user@sahara ~/lecture1]$ cat messages/en-us.txt messages/es-mx.txt
+Hello World!
+¡Hola Mundo!
 ```
