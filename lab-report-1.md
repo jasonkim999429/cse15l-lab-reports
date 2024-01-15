@@ -1,5 +1,5 @@
 # **Lab Report 1**
-## Jason Kim, A16953241
+Jason Kim, A16953241
 
 In this week's lab, I explored three commands: `cd`, `ls`, and `cat`. I tested these commands to see what sort of outputs and errors result from varying arguments (or lack of!). 
 
