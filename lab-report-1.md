@@ -16,7 +16,7 @@ I first tested the `cd` command with no arguments. In this example, I started in
 [user@sahara ~]$
 ```
 
-I also tested it by changing into the messages directory, located in the lecture1 directory, and inputted `cd` without any arguments and received the same results: no output in terminal, working directory changed to `/home` directory.
+I also tested it by changing into the `/home/lecture1/messages` directory, located in the `/home/lecture1` directory, and inputted `cd` without any arguments and received the same results: no output in terminal, working directory changed to the `/home` directory.
 
 ```
 [user@sahara ~/lecture1/messages]$ cd
@@ -64,7 +64,7 @@ Hello.class  Hello.java  messages  README
 Directory path argument
 ---
 
-This example starts once again in the `/home/lecture1` directory, and I provided the `ls` command with an argument: a path to another directory. We know from the previous example, the `/home/lecture1/messages` directory is a child of the `/home/lecture1` directory. Thus, we can use `messages` as a relative path to that directory. We can see that the output is a list of all files in the `messages` directory. This is not an error; from this we can infer that giving the `ls` command a valid path to a directory as an argument will list all contents of that directory.
+This example starts once again in the `/home/lecture1` directory, and I provided the `ls` command with an argument: a path to another directory. We know from the previous example, the `/home/lecture1/messages` directory is a child of the `/home/lecture1` directory. Thus, we can use `messages` as a relative path to that directory. We can see that the output is a list of all files in the `/home/lecture1/messages` directory. This is not an error; from this we can infer that giving the `ls` command a valid path to a directory as an argument will list all contents of that directory.
 
 ```
 [user@sahara ~/lecture1]$ ls messages
@@ -75,7 +75,7 @@ en-us.txt  es-mx.txt  ko.txt  zh-cn.txt
 File path argument
 ---
 
-Starting in the `/home/lecture1` directory, I initiated the `ls` command with a path to a file as an argument. The output was the name of the file specified, which is the expected behavior as described by the documentation, so it is not an error. However, this output is not very helpful to us. This was repeated multiple times with different types of files (.class, .java, etc.) in order to ensure that the behavior was not specific to any one of these types of files.
+Starting in the `/home/lecture1` directory, I initiated the `ls` command with a path to a file as an argument. The output was the name of the file specified, which is the expected behavior as described by the documentation, so it is not an error. However, this output is not very helpful to us. This was repeated multiple times with different types of files in order to ensure that the behavior was not specific to any one type of file.
 
 ```
 [user@sahara ~/lecture1]$ ls Hello.java
@@ -95,7 +95,7 @@ messages/en-us.txt
 No argument
 ---
 
-We started in the `/home/lecture1` directory in this example, and used the `cat` command without any additional arguments. After entering the command, we can continue typing text, and after pressing 'return', the terminal prints back to us what we typed on that line, as shown below. I tried different examples, such as re-entering the `cat` command or with different arguments and path files, but the terminal only reprinted the typed line and prompted us for another input. The only way to break the input loop was to input Ctrl+C, similar to breaking an infinite loop. This is not very helpful and can be considered an error.
+We started in the `/home/lecture1` directory in this example, and used the `cat` command without any additional arguments. After entering the command, we can continue typing text, and after pressing 'return', the terminal prints back to us what we typed on that line, as shown below. I tried different examples, such as re-entering the `cat` command or with different arguments and path files, but the terminal only reprinted the typed line and prompted us for another input. The only way to break the input loop was to input `Ctrl+C`, similar to breaking an infinite loop. This is not very helpful and can be considered an error.
 
 ```
 [user@sahara ~/lecture1]$ cat
@@ -113,7 +113,7 @@ cat Hello.java
 Directory path argument
 ---
 
-We started again in the `/home/lecture1` directory, using the `cat` command with a path to a directory as an argument. Since `/home/lecture1/messages` is a child directory of our current working directory, we can use the relative path. The output indicates an error, stating that `messages` is a directory. This implies that we cannot use paths to directories as our argument for the `cat` command.
+We started again in the `/home/lecture1` directory, using the `cat` command with a path to a directory as an argument. Since `/home/lecture1/messages` is a child directory of our current working directory, we can use the relative path as our argument. The output indicates an error, stating that `messages` is a directory. This implies that we cannot use paths to directories as our argument for the `cat` command.
 
 ```
 [user@sahara ~/lecture1]$ cat messages
