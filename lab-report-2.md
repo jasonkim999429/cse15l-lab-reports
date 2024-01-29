@@ -51,4 +51,10 @@ We added a message to our chatlog using the following query: `/add-message?s=hel
 
 ![Message 1](lab-report-2-images/ChatServerMessage1.png)
 
+In this usage of `/add-message`, we called the following methods:
+1. `.getPath()`: Calling this method on `url` (which is a `URI`) returns the path of the `URI` as a `String`. Our `URI` was `http://localhost:4000
+2. `.contains()`: We called this method on the `String` path of the `URI` with `"/add-message"` as a `String` argument to check if the argument is a substring of the path.
+3. `.getQuery()`: Calling this method on `url` returns the query portion of the `URI` as a `String`.
+4. `.split()`: We called this method on the `String` query of the `URI` with `"[&=]"` as the argument. These are the two delimiters that allow us to separate the `String` into multiple `Strings` that we store in a `String` array named `parameters`.
+
 
