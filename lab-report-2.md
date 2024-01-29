@@ -89,3 +89,26 @@ In this request, the `username` and `user` variables were changed from the diffe
 
 ## Part 2: SSH Keys
 
+Logging In Without Password
+---
+After going through the steps in the Week 3 Lab instructions, I was successfully able to log into the `ieng6` computers remotely with `ssh` without having to input my login credentials, as shown in the screenshot below. The command I used to remotely access was `ssh jak019@ieng6.ucsd.edu`, and I didn't have to input anything after that single command.
+![Successful Login](lab-report-2-images/LogInNoPassword.png)
+
+
+Private Key Path
+---
+First, I checked my current working directory, then used the `ls -a` command to show all folders (including hidden folders starting with .). From this directory I used `cd` to change directory into the `/Users/jasonkim/.ssh` directory, where I used `ls -a` to find the `id_rsa` file, which holds the private SSH key on my personal computer.
+Thus, the absolute path to the private SSH key is: `/Users/jasonkim/.ssh/id_rsa`
+![Private Key Path](lab-report-2-images/PathToPrivKey.png)
+
+
+Public Key Path
+---
+First, 
+![Public Key Path](lab-report-2-images/PathToPubKey.png)
+
+
+
+
+
+## Part 3: New Insights
