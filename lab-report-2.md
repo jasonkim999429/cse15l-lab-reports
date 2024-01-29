@@ -110,6 +110,5 @@ Thus, the absolute path to the public SSH key (on the `ieng6` machine) is: `/hom
 
 
 
-
-
 ## Part 3: New Insights
+Althought a lot of week 3's lab was review since VSCode and JUnit are tools that we already used/installed for CSE12, I learned about the `mkdir` command, which creates a new directory, and the `scp` command which copies a file (or directory) between a remote system and a local system. These are useful commands that can help in setting up web servers or access remote files more easily, and through the `ChatServer` implementation, I learned this week about how we can use web servers in interactive ways to store data and how to interact with the user, which I hope to be able to explore more in future labs.
