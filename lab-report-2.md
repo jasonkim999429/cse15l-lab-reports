@@ -49,4 +49,6 @@ Adding Message 1
 ---
 We added a message to our chatlog using the following query: `/add-message?s=hello%20world!&user=jason`. As we can see from the screenshot below, we got the message to display as expected.
 
-![Message 1](
+![Message 1](lab-report-2-images/ChatServerMessage1)
+
+
