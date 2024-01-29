@@ -104,7 +104,8 @@ Thus, the absolute path to the private SSH key is: `/Users/jasonkim/.ssh/id_rsa`
 
 Public Key Path
 ---
-First, 
+Similar to finding the path to my private key, I used the `ls -a` command to show all folders, including hidden folders. I used `cd` to change directory into the `/home/linux/ieng6/oce/72/jak019/.ssh` directory, where I used `ls -a` to find the `authorized_keys` file that stores the public SSH key on the `ieng6` machines. The `id_rsa.pub` file on my personal machine had the public key, which we copied onto the `authorized_key` file using `mkdir` in the lab.
+Thus, the absolute path to the public SSH key (on the `ieng6` machine) is: `/home/linus/ieng6/oce/72/jak019/.ssh/authorized_keys`
 ![Public Key Path](lab-report-2-images/PathToPubKey.png)
 
 
