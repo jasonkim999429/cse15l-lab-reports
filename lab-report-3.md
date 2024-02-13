@@ -1,7 +1,7 @@
 # **Lab Report 3**
 Jason Kim, A16953241
 
-In Week 4's lab, we looked at JUnit tests and debugging programs with various symptomatic errors. In Week 5's lab, we used different commands in bash to help us manipulate files and gather more information about certain attributes of those files and directories. In this lab report, we will see the efforts and process of our debugging, as well as perform a deep dive into `grep`.
+In Week 4's lab, we looked at JUnit tests and debugging programs with various symptomatic errors. In Week 5's lab, we used different commands in bash to help us manipulate files and gather more information about certain attributes of those files and directories. In this lab report, we will see the efforts and process of our debugging, as well as perform a deep dive into `find`.
 
 ## Part 1: Bugs
 
@@ -121,5 +121,7 @@ OK (2 tests)
 ```
 We have successfully debugged our method!
 
-## Part 2: Researching `grep`
+## Part 2: Researching `find`
+
+We explored the `find` command a little bit in Lab 5, and in this lab report, we will explore four different options for the `find` command that we can utilize for different results.
 
