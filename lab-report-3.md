@@ -125,6 +125,8 @@ We have successfully debugged our method!
 
 We explored the `find` command a little bit in Lab 5, and in this lab report, we will explore four different options for the `find` command that we can utilize for different results.
 
+All options below were found using the `man find` command, which gives us a a manual on arguments and options for a given command directly in the terminal.
+
 `-name` option
 ---
 We first saw the use of the `-name` option during lab to find certain files with a specific pattern; for example, all files ending in `.txt`. Let us explore using different patterns to find files in the `./technical` directory from lab.
@@ -144,7 +146,7 @@ Jasons-Air:docsearch jasonkim$ find ./technical -name Legal*
 ./technical/government/Media/Legal_services_for_poor.txt
 ./technical/government/Media/Legal_Aid_campaign.txt
 ```
-In this example, we wanted to find something related to legal systems and legal precedents. Rather than searching through the entire filesystem, we used the pattern `Legal*` to find any files with names that follow the pattern. This might be helpful in situations where we are finding certain topics of files through large databases, or could be used to implement a search function or system.
+In this example, we wanted to find something related to legal systems and legal precedents. Rather than searching through the entire filesystem, we used the pattern `Legal*` to find any files with names that follow the pattern, and the filepaths are printed out to the user. This might be helpful in situations where we are finding certain topics of files through large databases, or could be used to implement a search function or system.
 
 ```
 Jasons-Air:docsearch jasonkim$ find ./technical -name *2003-4-6*
@@ -152,8 +154,139 @@ Jasons-Air:docsearch jasonkim$ find ./technical -name *2003-4-6*
 ./technical/biomed/gb-2003-4-6-r37.txt
 ./technical/biomed/gb-2003-4-6-r39.txt
 ```
-In this example, we wanted to find some biomedical research papers that were published on 4/6/2003. The `-name` option allows us to filter for files with that pattern, assuming that the file system is sorted by date. If all of the files in the system had their date of publication in the filename, we would be able to search effectively for certain criteria.
+In this example, we wanted to find some biomedical research papers that were published on 4/6/2003. The `-name` option allows us to filter for files with that pattern, and returns the filepaths to all of the matches. If all of the files in the system had their date of publication in the filename, we would be able to search effectively for certain criteria.
+
 
 `-type` option
 ---
+We now look at the `-type` option, which allows us to use the `find` command to recursively search for certain types of files (like regular files, directories, etc.). In our case, we are most likely to use it to filter for only files or only directories.
 
+```
+Jasons-Air:docsearch jasonkim$ find ./technical -type d
+./technical
+./technical/government
+./technical/government/About_LSC
+./technical/government/Env_Prot_Agen
+./technical/government/Alcohol_Problems
+./technical/government/Gen_Account_Office
+./technical/government/Post_Rate_Comm
+./technical/government/Media
+./technical/plos
+./technical/biomed
+./technical/911report
+```
+In this example, we wanted to see how many directories there were in the entire `./technical` directory (including itself). We can also see that all of the subdirectories were printed out to the user as well. This could be useful in a large filesystem for searching for a specific file, where you know the type of the file but can't remember which subdirectory it is in.
+
+```
+Jasons-Air:docsearch jasonkim$ find ./technical/government/A* -type f
+./technical/government/About_LSC/LegalServCorp_v_VelazquezSyllabus.txt
+./technical/government/About_LSC/Progress_report.txt
+./technical/government/About_LSC/Strategic_report.txt
+./technical/government/About_LSC/Comments_on_semiannual.txt
+./technical/government/About_LSC/Special_report_to_congress.txt
+./technical/government/About_LSC/CONFIG_STANDARDS.txt
+./technical/government/About_LSC/commission_report.txt
+./technical/government/About_LSC/LegalServCorp_v_VelazquezDissent.txt
+./technical/government/About_LSC/ONTARIO_LEGAL_AID_SERIES.txt
+./technical/government/About_LSC/LegalServCorp_v_VelazquezOpinion.txt
+./technical/government/About_LSC/diversity_priorities.txt
+./technical/government/About_LSC/reporting_system.txt
+./technical/government/About_LSC/State_Planning_Report.txt
+./technical/government/About_LSC/Protocol_Regarding_Access.txt
+./technical/government/About_LSC/ODonnell_et_al_v_LSCdecision.txt
+./technical/government/About_LSC/conference_highlights.txt
+./technical/government/About_LSC/State_Planning_Special_Report.txt
+./technical/government/Alcohol_Problems/Session2-PDF.txt
+./technical/government/Alcohol_Problems/Session3-PDF.txt
+./technical/government/Alcohol_Problems/DraftRecom-PDF.txt
+./technical/government/Alcohol_Problems/Session4-PDF.txt
+```
+In this example, we can see how we can use patterns in the path argument to search for files inside of multiple directories. We specified that we want to filter for regular files inside of the `./technical/government` directory, and only inside of subdirectories that start with `A`. Thus the printed output consists of files from the `./technical/government/About_LSC` directory and the `./technical/government/Alcohol_Problems` directory. Having this option allows us to narrow down the exact file path in a complicated filesystem when we have some information about the files we're looking for.
+
+
+`-print` option
+---
+
+We now look at the `-print` option for `find`, which prints the filepath for a given file or the contents of a directory. Let us first look at if a path to a file is given as the argument.
+
+```
+Jasons-Air:docsearch jasonkim$ find technical/911report/chapter-1.txt -print
+technical/911report/chapter-1.txt
+```
+We see that when we use a path to a file, the path is printed out back to us. Not a very helpful use case, but we can also try using a directory path as an argument.
+
+```
+Jasons-Air:docsearch jasonkim$ find technical/911report -print
+technical/911report
+technical/911report/chapter-13.4.txt
+technical/911report/chapter-13.5.txt
+technical/911report/chapter-13.1.txt
+technical/911report/chapter-13.2.txt
+technical/911report/chapter-13.3.txt
+technical/911report/chapter-3.txt
+technical/911report/chapter-2.txt
+technical/911report/chapter-1.txt
+technical/911report/chapter-5.txt
+technical/911report/chapter-6.txt
+technical/911report/chapter-7.txt
+technical/911report/chapter-9.txt
+technical/911report/chapter-8.txt
+technical/911report/preface.txt
+technical/911report/chapter-12.txt
+technical/911report/chapter-10.txt
+technical/911report/chapter-11.txt
+```
+This output is much more helpful, as it printed out the filepaths of all files in that directory. If there were nested directories in this directory, the filepath to files in those directories would also be printed. This is a similar use case to the `-name` option, but we can use this as a diagnostic to see if we are getting the right directory before doing something else, like output redirection into a file. This is also helpful in navigating and looking around large filesystems without having to `cd` into multiple nested directories.
+
+
+`-mtime` option
+---
+For the sake of exhibiting some examples, 11 of the files in `technical` were modified by adding a space or another random character in their contents.
+
+The `-mtime` option for `find` is used to search for files based on modification time.
+```
+Jasons-Air:docsearch jasonkim$ find technical -mtime -1
+technical
+technical/government
+technical/government/Env_Prot_Agen/ro_clear_skies_book.txt
+technical/government/Alcohol_Problems
+technical/government/Alcohol_Problems/DraftRecom-PDF.txt
+technical/government/Post_Rate_Comm/Cohenetal_Cost_Function.txt
+technical/plos/journal.pbio.0020353.txt
+technical/plos/journal.pbio.0020404.txt
+technical/biomed/1471-213X-1-3.txt
+technical/biomed/1471-2121-3-18.txt
+technical/biomed/1471-213X-1-13.txt
+technical/911report/chapter-7.txt
+technical/911report/chapter-12.txt
+```
+We gave the argument `-1` here, and as we manually modified these random files within the last hour of running the `find` command, the paths to those files were printed. We also see that the `technical` and `technical/government` directories were printed; this means that they were modified within the last hour as well.
+
+Let us expand the modification time:
+```
+Jasons-Air:docsearch jasonkim$ find technical -mtime -5
+technical
+technical/government
+technical/government/About_LSC
+technical/government/Env_Prot_Agen
+technical/government/Env_Prot_Agen/ro_clear_skies_book.txt
+technical/government/Alcohol_Problems
+technical/government/Alcohol_Problems/DraftRecom-PDF.txt
+technical/government/Gen_Account_Office
+technical/government/Post_Rate_Comm
+technical/government/Post_Rate_Comm/Cohenetal_Cost_Function.txt
+technical/government/Media
+technical/plos
+technical/plos/journal.pbio.0020353.txt
+technical/plos/journal.pbio.0020404.txt
+technical/biomed
+technical/biomed/1471-213X-1-3.txt
+technical/biomed/1471-2121-3-18.txt
+technical/biomed/1471-213X-1-13.txt
+technical/911report
+technical/911report/chapter-7.txt
+technical/911report/chapter-12.txt
+```
+Here we gave the argument `-5`, and in addition to all of the previous filepaths, there are more filepaths for both files and directories printed. The new filepaths are the files that were modified somewhere between 1 and 5 hours ago. These use cases can be helpful if a file was closed accidentally while working and we needed to open it up again, or if we were to accidentally lose a file by sending it to an unknown directory, we could find it through this option.
+
+From the explorations into these various options, we can see that the `find` command is not a command limited to finding just a single given file in our filesystem.
