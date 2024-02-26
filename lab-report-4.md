@@ -6,10 +6,10 @@ In this week's lab, we got more comfortable using only the command line to navig
 ## Time Trials
 As part of the setup process, before starting the clock we deleted all practice forks created during the lab and forked the provided repository again for a fresh start. (Steps 1-3)
 
-Step 4: Logging into ieng6
+Step 4: Logging into `ieng6`
 ---
-First, to log into the ieng6 machines, we typed out the command `ssh jak019@ieng6.ucsd.edu<Enter>` in our terminal to `ssh` in remotely.
-Then, we want to clone our fork in our workspace for this class, so we typed `cs15<Tab><Enter>`, where the `<tab>` autocompletes our desired command to open our environment.
+First, to log into the `ieng6` machines, we typed out the command `ssh jak019@ieng6.ucsd.edu<Enter>` in our terminal to `ssh` in remotely.
+We want to clone our fork in our workspace for this class, so we typed `cs15<Tab><Enter>`, where the `<tab>` autocompletes our desired command to open our environment.
 We are now ready to clone our fork!
 ![Step 4](lab-report-4-images/Step4.png)
 
